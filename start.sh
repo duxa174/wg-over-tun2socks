@@ -13,6 +13,6 @@ ip rule add from "$LIP" table lip
 ip r add default via "$MIP" dev eth0 table lip
 ip r add "$VLESS_IP"/32 via "$MIP" dev eth0
 ip r add default dev tun0 metric 50
-nohup tun2socks -device tun://tun0 -proxy socks5://xray:1080 &
+nohup tun2socks -device tun://tun0 -proxy socks5://"$PROXY_ADDR" &
 
 node server.js
